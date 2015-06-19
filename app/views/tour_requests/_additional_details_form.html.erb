@@ -1,0 +1,21 @@
+<%= form_for tour_request do |f| %>
+
+  <%= render partial: "errors", locals: { tour_request: tour_request } %>
+
+  <%= f.label :requested_tour_date %>
+  <%= f.datetime_select :requested_tour_date %>
+
+  <h3>Amenities</h3>
+  <ul>
+  <% amenities.each_with_index do |amenity, i| %>
+    <li>
+      <label>
+        <%= check_box_tag "amenity_ids[]", amenity.id, false %>
+        <%= amenity.name %>
+      </label>
+    </li>
+  <% end %>
+  </ul>
+
+  <%= f.submit "Submit" %>
+<% end %>

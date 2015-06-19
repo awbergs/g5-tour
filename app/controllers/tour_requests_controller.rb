@@ -10,6 +10,7 @@ class TourRequestsController < ApplicationController
   end
 
   def show
+    @amenities = Amenity.order(:name) if @step_two
   end
 
   # POST /tour_requests
@@ -27,7 +28,8 @@ class TourRequestsController < ApplicationController
   def update
 
     if @tour_request.update_attributes(update_params)
-      redirect_to :activate, notice: 'Tour request was successfully created.'
+      @tour_request.amenity_ids = params[:amenity_ids] if params[:amenity_ids]
+      redirect_to tour_request_path(@tour_request)
     else
       render :show
     end

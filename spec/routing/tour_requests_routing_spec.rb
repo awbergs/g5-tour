@@ -4,7 +4,11 @@ RSpec.describe TourRequestsController, :type => :routing do
   describe "routing" do
 
     it "routes to #index" do
-      expect(:get => "/activate").to route_to("tour_requests#activate")
+      expect(get: '/').to route_to('tour_requests#index')
+    end
+
+    it "routes to #activate" do
+      expect(get: "/activate").to route_to("tour_requests#activate")
     end
 
     it "routes to #show" do
@@ -16,7 +20,7 @@ RSpec.describe TourRequestsController, :type => :routing do
     end
 
     it "routes to #update" do
-      expect(put: "tour_requests/1").to route_to("tour_requests#update", id: "1")
+      expect(put: "tour_requests/1").to route_to("tour_requests#update", token: "1")
     end
 
   end
