@@ -8,6 +8,10 @@ class TourRequest < ActiveRecord::Base
 
   before_create :set_token
 
+  def to_param
+    token
+  end
+
   protected
 
   def set_token

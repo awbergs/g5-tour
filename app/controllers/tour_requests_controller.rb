@@ -1,5 +1,6 @@
 class TourRequestsController < ApplicationController
   before_action :set_tour_request, only: [:show, :update]
+  before_action :determine_step, only: [:show, :update]
 
   def index
     @tour_request = TourRequest.new
@@ -22,7 +23,23 @@ class TourRequestsController < ApplicationController
     end
   end
 
+  # PATCH /tour_requests
+  def update
+
+    if @tour_request.update_attributes(update_params)
+      redirect_to :activate, notice: 'Tour request was successfully created.'
+    else
+      render :show
+    end
+  end
+
   private
+
+  def determine_step
+    @step_one = @tour_request.first_name.nil?
+    @step_two = @tour_request.requested_tour_date.nil?
+    @step_three = !@step_one && !@step_two
+  end
 
   def set_tour_request
     @tour_request = TourRequest.find_by(token: params[:token])
@@ -30,6 +47,10 @@ class TourRequestsController < ApplicationController
 
   def create_params
     params.require(:tour_request).permit(:email)
+  end
+
+  def update_params
+    params.require(:tour_request).permit(:first_name, :last_name, :phone)
   end
 
 end

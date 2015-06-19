@@ -54,7 +54,7 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-  resources :tour_requests, param: :token, only: [:create, :show]
+  resources :tour_requests, param: :token, only: [:create, :show, :update]
   get 'activate', to: 'tour_requests#activate'
 
   root 'tour_requests#index'

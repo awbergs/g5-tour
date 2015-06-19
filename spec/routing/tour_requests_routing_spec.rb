@@ -15,5 +15,9 @@ RSpec.describe TourRequestsController, :type => :routing do
       expect(post: "/tour_requests").to route_to("tour_requests#create")
     end
 
+    it "routes to #update" do
+      expect(put: "tour_requests/1").to route_to("tour_requests#update", id: "1")
+    end
+
   end
 end

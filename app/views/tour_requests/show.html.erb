@@ -1,8 +1,9 @@
 <h1>Your Tour Request</h1>
 
-<% if @tour_request.first_name.nil? %>
+<% if @step_one %>
   <p>We need some information to get started.</p>
   <%= render partial: 'personal_details_form', locals: { tour_request: @tour_request} %>
-<% elsif @tour_request.requested_tour_date.nil? %>
+<% elsif @step_two %>
+  <%= render partial: 'additional_details_form', locals: { tour_request: @tour_request} %>
 <% else %>
 <% end %>
