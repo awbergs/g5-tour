@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  email: MyString
+  first_name: MyString
+  last_name: MyString
+  phone: MyString
+  requested_tour_date: 2015-06-19 16:51:51
+  questions: MyString
+  ip_address: MyString
+  rating: 
+
+two:
+  email: MyString
+  first_name: MyString
+  last_name: MyString
+  phone: MyString
+  requested_tour_date: 2015-06-19 16:51:51
+  questions: MyString
+  ip_address: MyString
+  rating: 

@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  amenity_id: 
+  tour_request_id: 
+
+two:
+  amenity_id: 
+  tour_request_id: 
