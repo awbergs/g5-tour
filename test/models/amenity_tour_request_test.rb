@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class AmenitiesTourRequestTest < ActiveSupport::TestCase
+class AmenityTourRequestTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

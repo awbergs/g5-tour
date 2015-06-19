@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150619205328) do
+ActiveRecord::Schema.define(version: 20150619205900) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,13 +20,13 @@ ActiveRecord::Schema.define(version: 20150619205328) do
     t.string "name", null: false
   end
 
-  create_table "amenities_tour_requests", force: :cascade do |t|
-    t.integer "amenity_id",      null: false
-    t.integer "tour_request_id", null: false
+  create_table "amenity_tour_requests", force: :cascade do |t|
+    t.integer "amenity_id"
+    t.integer "tour_request_id"
   end
 
-  add_index "amenities_tour_requests", ["amenity_id"], name: "index_amenities_tour_requests_on_amenity_id", using: :btree
-  add_index "amenities_tour_requests", ["tour_request_id"], name: "index_amenities_tour_requests_on_tour_request_id", using: :btree
+  add_index "amenity_tour_requests", ["amenity_id"], name: "index_amenity_tour_requests_on_amenity_id", using: :btree
+  add_index "amenity_tour_requests", ["tour_request_id"], name: "index_amenity_tour_requests_on_tour_request_id", using: :btree
 
   create_table "tour_requests", force: :cascade do |t|
     t.string   "email",               null: false
@@ -41,6 +41,6 @@ ActiveRecord::Schema.define(version: 20150619205328) do
     t.datetime "updated_at",          null: false
   end
 
-  add_foreign_key "amenities_tour_requests", "amenities"
-  add_foreign_key "amenities_tour_requests", "tour_requests"
+  add_foreign_key "amenity_tour_requests", "amenities"
+  add_foreign_key "amenity_tour_requests", "tour_requests"
 end
