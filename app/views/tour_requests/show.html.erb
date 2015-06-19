@@ -7,10 +7,10 @@
   <p>Just a few more pieces of information and we can confirm your tour date.</p>
   <%= render partial: 'additional_details_form', locals: { tour_request: @tour_request, amenities: @amenities} %>
 <% else %>
-  <p><%= tour_request.email %></p>
-  <p><%= tour_request.first_name %></p>
-  <p><%= tour_request.last_name %></p>
-  <p><%= tour_request.phone %></p>
-  <p><%= tour_request.requested_tour_date.strftime("%R") %></p>
-  <p><%= tour_request.amenities.collect{|a| a.name }.join(', ') %></p>
+  <p><%= @tour_request.email %></p>
+  <p><%= @tour_request.first_name %></p>
+  <p><%= @tour_request.last_name %></p>
+  <p><%= @tour_request.phone %></p>
+  <p><%= @tour_request.requested_tour_date.strftime("%R") %></p>
+  <p><%= @tour_request.amenities.collect{|a| a.name }.join(', ') %></p>
 <% end %>

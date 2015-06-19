@@ -52,7 +52,7 @@ class TourRequestsController < ApplicationController
   end
 
   def update_params
-    params.require(:tour_request).permit(:first_name, :last_name, :phone)
+    params.require(:tour_request).permit(:first_name, :last_name, :phone, "requested_tour_date(1i)", "requested_tour_date(2i)", "requested_tour_date(3i)", "requested_tour_date(4i)", "requested_tour_date(5i)")
   end
 
 end
