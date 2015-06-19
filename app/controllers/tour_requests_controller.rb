@@ -1,10 +1,14 @@
 class TourRequestsController < ApplicationController
+  before_action :set_tour_request, only: [:show, :update]
 
   def index
     @tour_request = TourRequest.new
   end
 
   def activate
+  end
+
+  def show
   end
 
   # POST /tour_requests
@@ -19,6 +23,10 @@ class TourRequestsController < ApplicationController
   end
 
   private
+
+  def set_tour_request
+    @tour_request = TourRequest.find_by(token: params[:token])
+  end
 
   def create_params
     params.require(:tour_request).permit(:email)

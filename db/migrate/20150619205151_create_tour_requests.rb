@@ -9,6 +9,7 @@ class CreateTourRequests < ActiveRecord::Migration
       t.string :questions
       t.string :ip_address
       t.integer :rating
+      t.string :token, null: false
 
       t.timestamps null: false
     end
