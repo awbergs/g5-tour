@@ -4,6 +4,8 @@ class TourRequest < ActiveRecord::Base
 
   validates :email, presence: true, format: /@/
 
+  validates :first_name, :last_name, :phone, presence: true, if: :persisted?
+
   before_create :set_token
 
   protected
