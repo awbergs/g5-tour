@@ -1,28 +1,27 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Getting Started
 
-Things you may want to cover:
+Setup
 
-* Ruby version
+* Ruby >= 2.2.0p0
 
-* System dependencies
+* Rails >= 4.2.0
 
-* Configuration
+* Postgres
 
-* Database creation
+Running Locally
 
-* Database initialization
+* Copy `database.yml.example` to a new file named `database.yml` and set the databse name, username, and password
 
-* How to run the test suite
+* Initialize database
+  * `rake db:create`
+  * `rake db:migrate`
+  * `rake amenities:generate`
 
-* Services (job queues, cache servers, search engines, etc.)
+* Run the server
+  * `rails s`
 
-* Deployment instructions
+Running Tests
 
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+* `rspec`
