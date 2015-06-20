@@ -20,7 +20,11 @@ RSpec.describe TourRequestsController, :type => :routing do
     end
 
     it "routes to #update" do
-      expect(put: "tour_requests/1").to route_to("tour_requests#update", token: "1")
+      expect(patch: "tour_requests/1").to route_to("tour_requests#update", token: "1")
+    end
+
+    it "routes to #additional_details" do
+      expect(patch: "tour_requests/1/additional_details").to route_to("tour_requests#additional_details", token: "1")
     end
 
   end

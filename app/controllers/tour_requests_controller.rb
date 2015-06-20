@@ -1,12 +1,28 @@
 class TourRequestsController < ApplicationController
-  before_action :set_tour_request, only: [:show, :update]
-  before_action :determine_step, only: [:show, :update]
+  before_action :set_tour_request, only: [:show, :update, :personal_details, :additional_details]
+  before_action :determine_step, only: [:show, :update, :personal_details, :additional_details]
 
   def index
     @tour_request = TourRequest.new
   end
 
   def activate
+  end
+
+  def success
+  end
+
+  # PATCH /tour_requests/:token/additional_details
+  def additional_details
+
+    @tour_request.requested_tour_date = params[:tour_request][:requested_tour_date]
+    @tour_request.amenity_ids = params[:amenity_ids]
+
+    if @tour_request.save
+      redirect_to :success
+    else
+      render :show
+    end
   end
 
   def show
@@ -24,11 +40,10 @@ class TourRequestsController < ApplicationController
     end
   end
 
-  # PATCH /tour_requests
+  # PATCH /tour_requests/:token
   def update
 
     if @tour_request.update_attributes(update_params)
-      @tour_request.amenity_ids = params[:amenity_ids] if params[:amenity_ids]
       redirect_to tour_request_path(@tour_request)
     else
       render :show
@@ -39,7 +54,7 @@ class TourRequestsController < ApplicationController
 
   def determine_step
     @step_one = @tour_request.first_name.nil?
-    @step_two = @tour_request.requested_tour_date.nil?
+    @step_two = !@step_one && @tour_request.requested_tour_date.nil?
     @step_three = !@step_one && !@step_two
   end
 

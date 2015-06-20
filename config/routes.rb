@@ -55,7 +55,9 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
   resources :tour_requests, param: :token, only: [:create, :show, :update]
+  patch 'tour_requests/:token/additional_details', to: 'tour_requests#additional_details', as: :tour_requests_additional_details
   get 'activate', to: 'tour_requests#activate'
+  get 'success', to: 'tour_requests#success'
 
   root 'tour_requests#index'
 end
