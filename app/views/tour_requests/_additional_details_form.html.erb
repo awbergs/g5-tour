@@ -2,8 +2,15 @@
 
   <%= render partial: "errors", locals: { tour_request: tour_request } %>
 
-  <%= f.label :requested_tour_date %>
-  <%= f.datetime_select :requested_tour_date %>
+  <div>
+    <%= f.label :requested_tour_date %>
+    <%= f.datetime_select :requested_tour_date %>
+  </div>
+
+  <div>
+    <%= f.label :questions %>
+    <%= f.text_area :questions %>
+  </div>
 
   <h3>Amenities</h3>
   <ul>

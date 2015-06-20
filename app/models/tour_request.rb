@@ -15,6 +15,10 @@ class TourRequest < ActiveRecord::Base
     token
   end
 
+  def name
+    return "#{first_name} #{last_name}"
+  end
+
   protected
 
   def set_token

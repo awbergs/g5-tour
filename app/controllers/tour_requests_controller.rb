@@ -14,11 +14,11 @@ class TourRequestsController < ApplicationController
 
   # PATCH /tour_requests/:token/additional_details
   def additional_details
-
-    @tour_request.requested_tour_date = params[:tour_request][:requested_tour_date]
-    @tour_request.amenity_ids = params[:amenity_ids]
-
-    if @tour_request.save
+    
+    if @tour_request.update_attributes(additional_details_params)
+      @tour_request.amenity_ids = params[:amenity_ids]
+      TourRequestMailer.success(@tour_request).deliver_later
+      TourRequestMailer.new_tour(@tour_request, request.remote_ip).deliver_later
       redirect_to :success
     else
       render :show
@@ -34,6 +34,7 @@ class TourRequestsController < ApplicationController
     @tour_request = TourRequest.new(create_params)
 
     if @tour_request.save
+      TourRequestMailer.activate(@tour_request).deliver_later
       redirect_to :activate, notice: 'Tour request was successfully created.'
     else
       render :index
@@ -67,7 +68,11 @@ class TourRequestsController < ApplicationController
   end
 
   def update_params
-    params.require(:tour_request).permit(:first_name, :last_name, :phone, "requested_tour_date(1i)", "requested_tour_date(2i)", "requested_tour_date(3i)", "requested_tour_date(4i)", "requested_tour_date(5i)")
+    params.require(:tour_request).permit(:first_name, :last_name, :phone)
+  end
+
+  def additional_details_params
+    params.require(:tour_request).permit("requested_tour_date(1i)", "requested_tour_date(2i)", "requested_tour_date(3i)", "requested_tour_date(4i)", "requested_tour_date(5i)", "questsions")
   end
 
 end
