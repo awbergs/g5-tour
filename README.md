@@ -17,6 +17,9 @@ Running Locally
   * `rake db:migrate`
   * `rake amenities:generate`
 
+* Sending emails
+  * Set `ENV['GMAIL_USERNAME']` and `ENV['GMAIL_PASSWORD']` in `~/.bash_profile`
+
 * Run the server
   * `rails s`
 
