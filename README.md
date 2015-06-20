@@ -1,5 +1,3 @@
-== README
-
 ## Getting Started
 
 Setup
