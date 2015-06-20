@@ -1,0 +1,7 @@
+<%= form_for tour_request, url: tour_requests_rating_path(tour_request) do |f| %>
+
+  <%= f.label :requested_tour_date, "Rate your tour" %>
+  <%= f.select :rating, 5.times.map{|n| [n + 1, n + 1]}.reverse %>
+
+  <%= f.submit "Submit" %>
+<% end %>

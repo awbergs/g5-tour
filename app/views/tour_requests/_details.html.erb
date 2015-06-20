@@ -1,0 +1,14 @@
+<dl>
+  <dt>Email</dt>
+  <dd><%= tour_request.email %></dd>
+  <dt>Name</dt>
+  <dd><%= tour_request.name %></dd>
+  <dt>Phone</dt>
+  <dd><%= tour_request.phone %></dd>
+  <dt>Questions</dt>
+  <dd><%= tour_request.questions %></dd>
+  <dt>Requested Tour Date</dt>
+  <dd><%= tour_request.requested_tour_date.strftime('%D %r') %></dd>
+  <dt>Amenities</dt>
+  <dd><%= tour_request.amenities.collect{|a| a.name}.join(',') %></dd>
+</dl>

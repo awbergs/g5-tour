@@ -56,6 +56,7 @@ Rails.application.routes.draw do
   #   end
   resources :tour_requests, param: :token, only: [:create, :show, :update]
   patch 'tour_requests/:token/additional_details', to: 'tour_requests#additional_details', as: :tour_requests_additional_details
+  patch 'tour_requests/:token/rating', to: 'tour_requests#rating', as: :tour_requests_rating
   get 'activate', to: 'tour_requests#activate'
   get 'success', to: 'tour_requests#success'
 

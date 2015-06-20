@@ -1,5 +1,5 @@
 class TourRequestsController < ApplicationController
-  before_action :set_tour_request, only: [:show, :update, :personal_details, :additional_details]
+  before_action :set_tour_request, only: [:show, :update, :personal_details, :additional_details, :rating]
   before_action :determine_step, only: [:show, :update, :personal_details, :additional_details]
 
   def index
@@ -23,6 +23,12 @@ class TourRequestsController < ApplicationController
     else
       render :show
     end
+  end
+
+  # PATCH /tour_requests/:token/rating
+  def rating
+    @tour_request.update_attributes(rating_params)
+    redirect_to tour_request_path(@tour_request)
   end
 
   def show
@@ -73,6 +79,10 @@ class TourRequestsController < ApplicationController
 
   def additional_details_params
     params.require(:tour_request).permit("requested_tour_date(1i)", "requested_tour_date(2i)", "requested_tour_date(3i)", "requested_tour_date(4i)", "requested_tour_date(5i)", "questsions")
+  end
+
+  def rating_params
+    params.require(:tour_request).permit(:rating)
   end
 
 end
