@@ -10,7 +10,7 @@ Setup
 
 Running Locally
 
-* Copy `database.yml.example` to a new file named `database.yml` and set the databse name, username, and password
+* Copy `database.yml.example` to a new file named `database.yml` and set the database name, username, and password
 
 * Initialize database
   * `rake db:create`
