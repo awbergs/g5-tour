@@ -10,6 +10,8 @@ Setup
 
 Running Locally
 
+* Run `bundle install`
+
 * Copy `database.yml.example` to a new file named `database.yml` and set the database name, username, and password
 
 * Initialize database
